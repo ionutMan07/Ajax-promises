@@ -20,10 +20,20 @@ const checkStatus = function (response) {
         let node = document.createElement("li");
         node.innerHTML = `<p> <b>Name: </b> ${item.title} <img src = '${item.imageUrl}' 
           style = 'margin-left: 50px; with:100px; height:100px'>
-          </p> <p> <b>Description: </b>${item.description}`;
+          </p> <p> <b>Description: </b>${item.description}<br><button class="update" data-serverId= '${item._id}'> Update Game</button>`;
         fragment.appendChild(node);
       }
+      
+      
       list.appendChild(fragment);
       list.removeChild(list.childNodes[list.childNodes.length - 1]);
     });
-  
+
+    function handleClick(event) {
+      var target = event.target;
+      console.log(target.getAttribute('data-serverId'));
+      
+    }
+    document.querySelectorAll('.update').forEach(function (item) {
+      item.addEventListener('click', handleClick);
+    });
